@@ -25,11 +25,10 @@ repo's Downtown Edmonton map, just a wider set of tracked projects.
 2. Project Settings → Service Accounts → generate a new private key (downloads
    a JSON file).
 3. In this repo: Settings → Secrets and variables → Actions → New repository
-   secret, named `FIREBASE_SERVICE_ACCOUNT`, value = the full JSON file
+   secret, named `FIREBASE_DOWNTOWN_SURROUNDING`, value = the full JSON file
    contents.
-4. Replace `REPLACE_WITH_YOUR_FIREBASE_PROJECT_ID` in both `.firebaserc` and
-   `.github/workflows/firebase-deploy.yml` with your actual Firebase project
-   ID.
+4. `.firebaserc` and `.github/workflows/firebase-deploy.yml` are already set
+   to the `downtown-surrounding-supply` Firebase project ID.
 5. Push to `main` — the workflow builds and deploys automatically.
 
 ## Updating project data
