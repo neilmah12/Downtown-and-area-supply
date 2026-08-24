@@ -11,7 +11,7 @@ import base64
 import os
 
 PROJECTS = [
-    {"id": 0,  "name": "100 House Additions",        "address": "10621 100 Ave NW",    "units": 33,   "status": "Under Construction", "year_built": None, "est_completion": None,    "lat": 53.53846361, "lng": -113.5042191},
+    {"id": 0,  "name": "100 House Additions",        "address": "10621 100 Ave NW",    "units": 33,   "status": "Active",             "year_built": None, "est_completion": None,    "lat": 53.53846361, "lng": -113.5042191},
     {"id": 1,  "name": "The Parks",                  "address": "10135 108 St NW",     "units": 363,  "status": "Stabilized",         "year_built": 2025, "est_completion": None, "lat": 53.54194156, "lng": -113.5060236},
     {"id": 2,  "name": "Falcon Tower 1",              "address": "10023 104 St NW",     "units": 234,  "status": "Stabilized",         "year_built": 2024, "est_completion": None, "lat": 53.53945662, "lng": -113.4988995},
     {"id": 3,  "name": "Peak Residences",             "address": "10058 102 St NW",     "units": 250,  "status": "Active",             "year_built": 2024, "est_completion": None, "lat": 53.54049702, "lng": -113.49607},
@@ -24,7 +24,7 @@ PROJECTS = [
     {"id": 10, "name": "The Parks Remaining Phases",  "address": "10135 108 St NW",     "units": 637,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.54160468, "lng": -113.5063256},
     {"id": 11, "name": "Lotus Park",                  "address": "10164 108 Street NW", "units": 152,  "status": "Under Construction", "year_built": None, "est_completion": None,    "lat": 53.54242712, "lng": -113.5071182},
     {"id": 12, "name": "Lilac Park",                  "address": "10154 108 Street NW", "units": 239,  "status": "Under Construction", "year_built": None, "est_completion": None,    "lat": 53.54215362, "lng": -113.5070765},
-    {"id": 13, "name": "Falcon Tower 2",              "address": "10003 104 St NW",     "units": 255,  "status": "Under Construction", "year_built": None, "est_completion": None,    "lat": 53.53916811, "lng": -113.498716},
+    {"id": 13, "name": "Falcon Tower 2",              "address": "10003 104 St NW",     "units": 255,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.53916811, "lng": -113.498716},
     {"id": 14, "name": "Williams Hall",               "address": "10030 102A Ave NW",   "units": 90,   "status": "Under Construction", "year_built": None, "est_completion": None,    "lat": 53.54464212, "lng": -113.4928116},
     {"id": 15, "name": "Massey Ferguson",             "address": "10303 107 St NW",     "units": 696,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.54521072, "lng": -113.5041885},
     {"id": 16, "name": "Westrich City Centre",        "address": "10205 102 Ave NW",    "units": 1500, "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.54368702, "lng": -113.4964628},
@@ -433,9 +433,9 @@ _new_js = "const PROJECTS = " + build_js_array(PROJECTS)
 _html = re.sub(r"const PROJECTS = \[.*?\];", _new_js + ";", _BASE, count=1, flags=re.DOTALL)
 
 _st = 1882
-_ac = 4
-_uc = 1004
-_pr = 6328
+_ac = 5
+_uc = 716
+_pr = 6583
 
 _html = re.sub(r'id="stat-st">\d+', f'id="stat-st">{_st}', _html)
 _html = re.sub(r'id="stat-ac">\d+', f'id="stat-ac">{_ac}', _html)
