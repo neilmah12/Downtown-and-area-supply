@@ -46,6 +46,7 @@ PROJECTS = [
     {"id": 32, "name": "Mercury Block",               "address": "12322 102 Ave NW",    "units": 163,  "status": "Stabilized",         "year_built": 2024, "est_completion": None,    "lat": 53.54331643, "lng": -113.5345024},
     {"id": 33, "name": "Edward Block",                "address": "10549 123 St NW",     "units": 161,  "status": "Stabilized",         "year_built": 2024, "est_completion": None,    "lat": 53.54905687, "lng": -113.5336839},
     {"id": 34, "name": "Grandin 2",                   "address": "11206 100 Ave",       "units": 267,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.53905674, "lng": -113.5144141},
+    {"id": 35, "name": "Five Oaks",                   "address": "9608 103 Ave NW",     "units": 174,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.54680491, "lng": -113.4839819},
 ]
 
 SUBJECT = {
@@ -435,7 +436,7 @@ _html = re.sub(r"const PROJECTS = \[.*?\];", _new_js + ";", _BASE, count=1, flag
 _st = 1882
 _ac = 5
 _uc = 716
-_pr = 6583
+_pr = 6757
 
 _html = re.sub(r'id="stat-st">\d+', f'id="stat-st">{_st}', _html)
 _html = re.sub(r'id="stat-ac">\d+', f'id="stat-ac">{_ac}', _html)
