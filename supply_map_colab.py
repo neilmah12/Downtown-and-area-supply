@@ -1,7 +1,7 @@
 # ============================================================
-# DOWNTOWN EDMONTON MF SUPPLY MAP — Churchill Apartments — Colab
+# DOWNTOWN + WÎHKWÊNTÔWIN MF SUPPLY MAP — Colab
 # ============================================================
-# 1. Edit PROJECTS and SUBJECT below as needed
+# 1. Edit PROJECTS below as needed
 # 2. Run the cell
 # 3. Download: Files panel > right-click file > Download
 # ============================================================
@@ -47,16 +47,8 @@ PROJECTS = [
     {"id": 33, "name": "Edward Block",                "address": "10549 123 St NW",     "units": 161,  "status": "Stabilized",         "year_built": 2024, "est_completion": None,    "lat": 53.54905687, "lng": -113.5336839},
     {"id": 34, "name": "Grandin 2",                   "address": "11206 100 Ave",       "units": 267,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.53905674, "lng": -113.5144141},
     {"id": 35, "name": "Five Oaks",                   "address": "9608 103 Ave NW",     "units": 174,  "status": "Proposed",           "year_built": None, "est_completion": None,    "lat": 53.54680491, "lng": -113.4839819},
+    {"id": 36, "name": "Churchill Apartments",        "address": "10015 103 Ave NW",    "units": 195,  "status": "Stabilized",         "year_built": 2025, "est_completion": None,    "lat": 53.54529221, "lng": -113.4916566},
 ]
-
-SUBJECT = {
-    "name": "Churchill Apartments",
-    "address": "10015 103 Ave NW",
-    "units": 195,
-    "year_built": 2025,
-    "lat": 53.54529221,
-    "lng": -113.4916566,
-}
 
 
 def _val(val):
@@ -91,7 +83,7 @@ _BASE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Churchill Apartments — Downtown Edmonton Supply</title>
+<title>Downtown + Wîhkwêntôwin Supply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -103,7 +95,7 @@ _BASE = """<!DOCTYPE html>
   --text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#a09d99;
   --accent:#c8572a;--accent-subtle:rgba(200,87,42,0.08);
   --amber:#d4830f;--amber-subtle:rgba(212,131,15,0.08);
-  --blue:#2a6496;--green:#2e7d4f;--subject:#7B1FA2;--subject-subtle:rgba(123,31,162,0.07);
+  --blue:#2a6496;--green:#2e7d4f;
   --shadow-md:0 4px 12px rgba(0,0,0,0.08);--shadow-lg:0 12px 32px rgba(0,0,0,0.1);--radius:8px;
 }
 html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);overscroll-behavior:none}
@@ -134,14 +126,6 @@ body{display:flex;flex-direction:column}
 #layout{flex:1;min-height:0;display:flex}
 #map{flex:1;min-height:0}
 #sidebar{width:340px;flex-shrink:0;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;box-shadow:-2px 0 8px rgba(0,0,0,0.04)}
-#subject-panel{padding:14px 18px;border-bottom:2px solid var(--border);background:var(--subject-subtle);flex-shrink:0}
-#subject-label{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--subject);margin-bottom:8px}
-#subject-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px}
-#subject-name{font-size:13.5px;font-weight:600;color:var(--text-primary);line-height:1.3;flex:1}
-#subject-badge{background:var(--subject);color:#fff;font-size:11px;font-weight:600;padding:2px 7px;border-radius:12px;white-space:nowrap;flex-shrink:0}
-#subject-type{font-size:12px;color:var(--text-secondary);margin-bottom:3px}
-#subject-size{font-size:11px;color:var(--text-muted);margin-bottom:3px;font-family:'DM Mono',monospace}
-#subject-addr{font-size:11px;color:var(--text-muted)}
 #sb-head{padding:16px 18px 12px;border-bottom:1px solid var(--border-light)}
 #sb-head h2{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
 #proj-list{flex:1;min-height:0;overflow-y:auto;padding:8px 0}
@@ -196,14 +180,13 @@ body{display:flex;flex-direction:column}
   #proj-list{flex:none;overflow-y:visible}
   #detail.open{max-height:2000px}
   .ftab,.pcard,.stat-chip{touch-action:manipulation}
-  #subject-panel{display:none}
 }
 </style>
 </head>
 <body>
 <div id="header">
   <div id="header-left">
-    <div id="header-title"><strong>Churchill Apartments</strong> &nbsp;&mdash;&nbsp; Downtown Edmonton Supply</div>
+    <div id="header-title"><strong>Downtown + Wîhkwêntôwin Supply</strong></div>
   </div>
   <div id="filter-bar">
     <div class="ftab active" data-filter="all">ALL</div>
@@ -237,15 +220,6 @@ body{display:flex;flex-direction:column}
 <div id="layout">
   <div id="map"></div>
   <div id="sidebar">
-    <div id="subject-panel">
-      <div id="subject-label">Subject Property</div>
-      <div id="subject-card-top">
-        <div id="subject-name">Churchill Apartments</div>
-        <div id="subject-badge">195 units</div>
-      </div>
-      <div id="subject-type">Year Built: 2025</div>
-      <div id="subject-addr">10015 103 Ave NW</div>
-    </div>
     <div id="sb-head"><h2>Rental Universe</h2></div>
     <div id="proj-list"></div>
     <div id="detail">
@@ -271,15 +245,6 @@ const PROJECTS = [
   },
 ];
 
-const SUBJECT = {
-  name: "Churchill Apartments",
-  address: "10015 103 Ave NW",
-  units: 195,
-  year_built: 2025,
-  lat: 53.54529221,
-  lng: -113.4916566
-};
-
 let activeId = null, markers = {}, popups = {}, activeFilter = 'all';
 
 const map = L.map('map', {zoomControl: false, attributionControl: false});
@@ -287,22 +252,6 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_M
 L.control.zoom({position: 'topleft'}).addTo(map);
 L.control.attribution({position: 'bottomleft', prefix: false}).addAttribution('&copy; Esri &middot; OpenStreetMap contributors').addTo(map);
 map.setView([53.543, -113.499], 15);
-
-var subjectIcon = L.divIcon({
-  className: '',
-  html: '<div class="cmarker" style="background:#7B1FA2;transform:rotate(-45deg) scale(1.25);"></div>',
-  iconSize: [32,32], iconAnchor: [16,32], popupAnchor: [0,-36]
-});
-
-L.marker([SUBJECT.lat, SUBJECT.lng], {icon: subjectIcon, title: SUBJECT.name})
-  .bindPopup(L.popup({closeButton: false, offset: [0,0]}).setContent(
-    '<div class="popup-inner">'
-    + '<div style="font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7B1FA2;margin-bottom:6px">Subject Property</div>'
-    + '<div class="popup-name">' + SUBJECT.name + '</div>'
-    + '<div class="popup-sub">' + SUBJECT.units + ' units · Year Built ' + SUBJECT.year_built + '</div>'
-    + '<div class="popup-row"><span class="popup-row-label">Address</span><span class="popup-row-value" style="text-align:right;max-width:140px">' + SUBJECT.address + '</span></div>'
-    + '</div>'
-  )).addTo(map);
 
 function markerColor(status) {
   if (status === 'Stabilized') return '#2e7d4f';
@@ -433,7 +382,7 @@ buildSidebar();
 _new_js = "const PROJECTS = " + build_js_array(PROJECTS)
 _html = re.sub(r"const PROJECTS = \[.*?\];", _new_js + ";", _BASE, count=1, flags=re.DOTALL)
 
-_st = 1882
+_st = 2077
 _ac = 5
 _uc = 716
 _pr = 6757
